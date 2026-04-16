@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiche de Révision – Anglais Pro & CS/IT</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+  :root {
+    --bg: #f5f0e8;
+    --ink: #1a1410;
+    --accent: #c84b2f;
+    --accent2: #2a6b8a;
+    --accent3: #5a8c3a;
+    --gold: #d4963a;
+    --soft: #e8dfd0;
+    --softer: #f0ebe0;
+    --border: #c8b89a;
+    --tag-bg: #1a1410;
+    --tag-txt: #f5f0e8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Lora', Georgia, serif;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 40px 48px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.15;
+  }
+  .header-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+  .header-sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: #aaa;
+    letter-spacing: 1px;
+  }
+
+  /* NAV sommaire */
+  .toc {
+    background: var(--soft);
+    border-bottom: 2px solid var(--border);
+    padding: 18px 48px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .toc a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    background: var(--ink);
+    color: var(--bg);
+    padding: 5px 12px;
+    border-radius: 2px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: background 0.2s;
+  }
+  .toc a:hover { background: var(--accent); }
+
+  /* LAYOUT */
+  .container { max-width: 960px; margin: 0 auto; padding: 40px 32px 80px; }
+
+  /* SECTION */
+  .section {
+    margin-bottom: 52px;
+    scroll-margin-top: 20px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 3px solid var(--ink);
+  }
+  .section-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent);
+    min-width: 48px;
+    line-height: 1;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .section-en {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: #888;
+    display: block;
+    margin-top: 3px;
+  }
+
+  /* CARDS */
+  .card {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 4px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    box-shadow: 2px 3px 0 var(--border);
+  }
+  .card-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .tag-red { background: var(--accent); color: white; }
+  .tag-blue { background: var(--accent2); color: white; }
+  .tag-green { background: var(--accent3); color: white; }
+  .tag-gold { background: var(--gold); color: white; }
+  .tag-dark { background: var(--ink); color: var(--bg); }
+
+  /* TABLE SYMBOLS */
+  .sym-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .sym-item {
+    background: var(--softer);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 12px 14px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .sym-char {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--accent);
+    min-width: 28px;
+    line-height: 1.2;
+  }
+  .sym-info { flex: 1; }
+  .sym-en {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .sym-fr {
+    font-family: 'Lora', serif;
+    font-size: 0.78rem;
+    color: #666;
+    font-style: italic;
+  }
+
+  /* TWO-COL */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 12px;
+  }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+  /* VOCAB TABLE */
+  .vtable { width: 100%; border-collapse: collapse; margin-top: 12px; }
+  .vtable th {
+    background: var(--ink);
+    color: var(--bg);
+    font-family: 'Syne', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 10px 14px;
+    text-align: left;
+    letter-spacing: 0.5px;
+  }
+  .vtable td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+    vertical-align: top;
+  }
+  .vtable tr:nth-child(even) td { background: var(--softer); }
+  .vtable .en { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 500; }
+  .vtable .fr { color: #555; font-style: italic; }
+
+  /* TIP BOX */
+  .tip {
+    background: #fff8ec;
+    border-left: 4px solid var(--gold);
+    padding: 14px 18px;
+    margin-top: 14px;
+    border-radius: 0 4px 4px 0;
+    font-size: 0.88rem;
+  }
+  .tip strong { color: var(--gold); font-family: 'Syne', sans-serif; }
+
+  .warn {
+    background: #fef2f0;
+    border-left: 4px solid var(--accent);
+    padding: 14px 18px;
+    margin-top: 14px;
+    border-radius: 0 4px 4px 0;
+    font-size: 0.88rem;
+  }
+  .warn strong { color: var(--accent); font-family: 'Syne', sans-serif; }
+
+  .ok {
+    background: #f0f7ee;
+    border-left: 4px solid var(--accent3);
+    padding: 14px 18px;
+    margin-top: 10px;
+    border-radius: 0 4px 4px 0;
+    font-size: 0.88rem;
+  }
+  .ok strong { color: var(--accent3); font-family: 'Syne', sans-serif; }
+
+  /* LIST */
+  ul.styled, ol.styled {
+    padding-left: 20px;
+    margin-top: 8px;
+  }
+  ul.styled li, ol.styled li { margin-bottom: 5px; }
+  ul.styled li::marker { color: var(--accent); }
+
+  /* EMAIL SCHEMA */
+  .email-schema {
+    background: white;
+    border: 2px solid var(--ink);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 16px;
+  }
+  .email-row {
+    display: flex;
+    border-bottom: 1px solid var(--border);
+    align-items: stretch;
+  }
+  .email-row:last-child { border-bottom: none; }
+  .email-label {
+    background: var(--soft);
+    padding: 9px 16px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 500;
+    min-width: 90px;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    border-right: 1px solid var(--border);
+  }
+  .email-content {
+    padding: 9px 16px;
+    font-size: 0.88rem;
+    flex: 1;
+    color: #333;
+  }
+  .email-fr {
+    font-size: 0.8rem;
+    color: #888;
+    font-style: italic;
+  }
+
+  /* FORMAL SCALE */
+  .scale {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 12px;
+  }
+  .scale-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .scale-badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 2px;
+    min-width: 100px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .lvl-4 { background: #1a1410; color: #f5f0e8; }
+  .lvl-3 { background: #3a3028; color: #f5f0e8; }
+  .lvl-2 { background: #8a7060; color: #f5f0e8; }
+  .lvl-1 { background: #d4b896; color: #1a1410; }
+  .lvl-0 { background: #f0ebe0; color: #1a1410; border: 1px solid var(--border); }
+  .scale-text { font-size: 0.9rem; }
+
+  /* JOBS TABLE */
+  .jobs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .job-item {
+    background: var(--softer);
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    border-radius: 3px;
+  }
+  .job-en { font-family: 'IBM Plex Mono', monospace; font-size: 0.82rem; font-weight: 500; color: var(--accent2); }
+  .job-fr { font-size: 0.83rem; color: #555; font-style: italic; }
+
+  /* FORMULA BOX */
+  .formula {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 16px 20px;
+    border-radius: 4px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    margin: 12px 0;
+    line-height: 1.8;
+  }
+  .formula .hl { color: var(--gold); font-weight: 500; }
+  .formula .hl2 { color: #7dcfb6; }
+
+  p { margin-top: 8px; }
+  strong { font-weight: 600; }
+
+  /* divider */
+  .divider {
+    height: 2px;
+    background: linear-gradient(to right, var(--accent), transparent);
+    margin: 30px 0;
+    border: none;
+  }
+
+  /* ABBREV */
+  .abbrev-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .abbrev-item {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 10px 14px;
+    border-radius: 3px;
+  }
+  .abbrev-code {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--gold);
+    display: block;
+  }
+  .abbrev-desc { font-size: 0.78rem; margin-top: 2px; color: #ccc; }
+
+  @media print {
+    body { font-size: 13px; }
+    .toc { display: none; }
+    .section { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">Fiche de révision complète</div>
+  <h1>Anglais Pro<br>CS &amp; IT</h1>
+  <div class="header-sub">Communicating at Work · Symbols · Email · Jobs in Tech</div>
+</div>
+
+<nav class="toc">
+  <a href="#s1">1. Symboles</a>
+  <a href="#s2">2. Communiquer au travail</a>
+  <a href="#s3">3. Champs d'un email</a>
+  <a href="#s4">4. Vocabulaire email</a>
+  <a href="#s5">5. Subject lines</a>
+  <a href="#s6">6. Salutations &amp; Sign-offs</a>
+  <a href="#s7">7. CS &amp; IT</a>
+  <a href="#s8">8. Métiers &amp; Compétences</a>
+</nav>
+
+<div class="container">
+
+<!-- ═══════════════════════════════ SECTION 1 ═══════════════════════════════ -->
+<section class="section" id="s1">
+  <div class="section-header">
+    <div class="section-num">01</div>
+    <div class="section-title">
+      Noms des symboles &amp; ponctuation
+      <span class="section-en">Symbols &amp; Punctuation Signs</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="tag tag-red">Cours</span> Ponctuation de base</div>
+    <div class="sym-grid">
+      <div class="sym-item"><span class="sym-char">.</span><div class="sym-info"><div class="sym-en">dot / full stop (UK) / period (US)</div><div class="sym-fr">point</div></div></div>
+      <div class="sym-item"><span class="sym-char">,</span><div class="sym-info"><div class="sym-en">comma</div><div class="sym-fr">virgule</div></div></div>
+      <div class="sym-item"><span class="sym-char">:</span><div class="sym-info"><div class="sym-en">colon</div><div class="sym-fr">deux-points</div></div></div>
+      <div class="sym-item"><span class="sym-char">;</span><div class="sym-info"><div class="sym-en">semi-colon</div><div class="sym-fr">point-virgule</div></div></div>
+      <div class="sym-item"><span class="sym-char">?</span><div class="sym-info"><div class="sym-en">question mark</div><div class="sym-fr">point d'interrogation</div></div></div>
+      <div class="sym-item"><span class="sym-char">!</span><div class="sym-info"><div class="sym-en">exclamation mark / factorial</div><div class="sym-fr">point d'exclamation / factorielle</div></div></div>
+      <div class="sym-item"><span class="sym-char">'</span><div class="sym-info"><div class="sym-en">apostrophe</div><div class="sym-fr">apostrophe (ex: don't)</div></div></div>
+      <div class="sym-item"><span class="sym-char">-</span><div class="sym-info"><div class="sym-en">hyphen (mot composé) / dash (tiret) / minus (maths)</div><div class="sym-fr">trait d'union / tiret / moins</div></div></div>
+      <div class="sym-item"><span class="sym-char">_</span><div class="sym-info"><div class="sym-en">underscore</div><div class="sym-fr">tiret bas (ex: nom_fichier)</div></div></div>
+      <div class="sym-item"><span class="sym-char">@</span><div class="sym-info"><div class="sym-en">at sign / "at"</div><div class="sym-fr">arobase</div></div></div>
+      <div class="sym-item"><span class="sym-char">'…'</span><div class="sym-info"><div class="sym-en">single quotes / single quotation marks</div><div class="sym-fr">guillemets simples</div></div></div>
+      <div class="sym-item"><span class="sym-char">"…"</span><div class="sym-info"><div class="sym-en">double quotes / double quotation marks</div><div class="sym-fr">guillemets doubles</div></div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="tag tag-blue">Cours</span> Parenthèses &amp; crochets</div>
+    <div class="sym-grid">
+      <div class="sym-item"><span class="sym-char">(</span><div class="sym-info"><div class="sym-en">opening (left) parenthesis / round bracket</div><div class="sym-fr">parenthèse ouvrante</div></div></div>
+      <div class="sym-item"><span class="sym-char">( )</span><div class="sym-info"><div class="sym-en">chevrons / parentheses</div><div class="sym-fr">chevrons</div></div></div>
+      <div class="sym-item"><span class="sym-char">{</span><div class="sym-info"><div class="sym-en">curly bracket / brace</div><div class="sym-fr">accolade</div></div></div>
+      <div class="sym-item"><span class="sym-char">]</span><div class="sym-info"><div class="sym-en">closing right / square bracket / box bracket</div><div class="sym-fr">crochet fermant</div></div></div>
+      <div class="sym-item"><span class="sym-char">&lt;html&gt;</span><div class="sym-info"><div class="sym-en">angle brackets</div><div class="sym-fr">chevrons (HTML)</div></div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="tag tag-green">Cours</span> Symboles mathématiques &amp; spéciaux</div>
+    <div class="sym-grid">
+      <div class="sym-item"><span class="sym-char">|</span><div class="sym-info"><div class="sym-en">vertical bar / pipe</div><div class="sym-fr">barre verticale</div></div></div>
+      <div class="sym-item"><span class="sym-char">∞</span><div class="sym-info"><div class="sym-en">the infinity sign</div><div class="sym-fr">l'infini</div></div></div>
+      <div class="sym-item"><span class="sym-char">^</span><div class="sym-info"><div class="sym-en">caret ("two squared")</div><div class="sym-fr">accent circonflexe / puissance</div></div></div>
+      <div class="sym-item"><span class="sym-char">/</span><div class="sym-info"><div class="sym-en">slash</div><div class="sym-fr">barre oblique</div></div></div>
+      <div class="sym-item"><span class="sym-char">\</span><div class="sym-info"><div class="sym-en">backslash</div><div class="sym-fr">barre oblique inversée</div></div></div>
+      <div class="sym-item"><span class="sym-char">&amp;</span><div class="sym-info"><div class="sym-en">ampersand</div><div class="sym-fr">et commercial</div></div></div>
+      <div class="sym-item"><span class="sym-char">*</span><div class="sym-info"><div class="sym-en">asterisk</div><div class="sym-fr">astérisque</div></div></div>
+      <div class="sym-item"><span class="sym-char">==</span><div class="sym-info"><div class="sym-en">the double equal sign</div><div class="sym-fr">double égal (code)</div></div></div>
+      <div class="sym-item"><span class="sym-char">n&lt;3</span><div class="sym-info"><div class="sym-en">the less than sign</div><div class="sym-fr">inférieur à</div></div></div>
+      <div class="sym-item"><span class="sym-char">n≤3</span><div class="sym-info"><div class="sym-en">"or equal to"</div><div class="sym-fr">inférieur ou égal</div></div></div>
+      <div class="sym-item"><span class="sym-char">25°</span><div class="sym-info"><div class="sym-en">the degree symbol</div><div class="sym-fr">symbole degré</div></div></div>
+      <div class="sym-item"><span class="sym-char">§</span><div class="sym-info"><div class="sym-en">section sign</div><div class="sym-fr">symbole de section</div></div></div>
+      <div class="sym-item"><span class="sym-char">¶</span><div class="sym-info"><div class="sym-en">pilcrow</div><div class="sym-fr">pied de mouche (¶ paragraphe)</div></div></div>
+      <div class="sym-item"><span class="sym-char">~</span><div class="sym-info"><div class="sym-en">tilde</div><div class="sym-fr">tilde</div></div></div>
+      <div class="sym-item"><span class="sym-char">#</span><div class="sym-info"><div class="sym-en">hashtag / number sign / pound sign</div><div class="sym-fr">dièse / hashtag</div></div></div>
+      <div class="sym-item"><span class="sym-char">…</span><div class="sym-info"><div class="sym-en">ellipsis ("dot dot dot")</div><div class="sym-fr">points de suspension</div></div></div>
+      <div class="sym-item"><span class="sym-char">π</span><div class="sym-info"><div class="sym-en">pi</div><div class="sym-fr">pi</div></div></div>
+      <div class="sym-item"><span class="sym-char">€ $ £</span><div class="sym-info"><div class="sym-en">euro / dollar / pound sign</div><div class="sym-fr">euro / dollar / livre sterling</div></div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="tag tag-gold">Cours</span> Accents</div>
+    <div class="sym-grid">
+      <div class="sym-item"><span class="sym-char">é</span><div class="sym-info"><div class="sym-en">acute accent</div><div class="sym-fr">accent aigu</div></div></div>
+      <div class="sym-item"><span class="sym-char">è</span><div class="sym-info"><div class="sym-en">grave accent</div><div class="sym-fr">accent grave</div></div></div>
+      <div class="sym-item"><span class="sym-char">ê</span><div class="sym-info"><div class="sym-en">circumflex accent</div><div class="sym-fr">accent circonflexe</div></div></div>
+      <div class="sym-item"><span class="sym-char">ï</span><div class="sym-info"><div class="sym-en">diaeresis / umlaut</div><div class="sym-fr">tréma</div></div></div>
+    </div>
+    <div class="tip"><strong>💡 Astuce mémo :</strong> Pense aux touches de ton clavier ! <em>@</em> = "at" (arobase), <em>#</em> = "hashtag" ou "pound", <em>*</em> = "asterisk". En code, <em>\</em> = backslash et <em>/</em> = slash (inverse !).</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SECTION 2 ═══════════════════════════════ -->
+<section class="section" id="s2">
+  <div class="section-header">
+    <div class="section-num">02</div>
+    <div class="section-title">
+      Les façons de communiquer au travail
+      <span class="section-en">Ways to communicate at work</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="tag tag-red">Cours</span> Les verbes et expressions pour communiquer</div>
+    <table class="vtable">
+      <tr><th>Anglais</th><th>Français</th></tr>
+      <tr><td class="en">to email someone / send an email to someone</td><td class="fr">envoyer un email à quelqu'un</td></tr>
+      <tr><td class="en">to send an instant message / chat / instant message someone</td><td class="fr">envoyer un message instantané / chatter</td></tr>
+      <tr><td class="en">to leave a note on someone's desk</td><td class="fr">laisser un mot sur le bureau</td></tr>
+      <tr><td class="en">to have a meeting</td><td class="fr">avoir une réunion</td></tr>
+      <tr><td class="en">to have an online meeting / a (video)call / a videoconference</td><td class="fr">avoir une réunion en ligne / un appel vidéo</td></tr>
+      <tr><td class="en">to send/post a letter / send something by post/snail mail</td><td class="fr">envoyer un courrier / par courrier traditionnel</td></tr>
+      <tr><td class="en">to telephone / ring / call someone</td><td class="fr">téléphoner à quelqu'un</td></tr>
+      <tr><td class="en">to make a phone call to someone / give someone a call</td><td class="fr">passer un coup de fil</td></tr>
+      <tr><td class="en">to message someone (phone &amp; computer)</td><td class="fr">envoyer un message</td></tr>
+      <tr><td class="en">to ping someone (computer only)</td><td class="fr">envoyer un ping / notifier (informatique)</td></tr>
+      <tr><td class="en">to chat/chit-chat with a colleague</td><td class="fr">discuter / papoter avec un collègue</td></tr>
+      <tr><td class="en">to pick a colleague's brain on something</td><td class="fr">demander l'avis d'un collègue sur qch</td></tr>
+      <tr><td class="en">to send a text (message) / text someone (phone)</td><td class="fr">envoyer un SMS</td></tr>
+      <tr><td class="en">to put up / post a poster on the notice board</td><td class="fr">afficher quelque chose au tableau</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="tag tag-blue">Cours</span> Comment choisir son canal de communication ?</div>
+    <p>Plusieurs critères influencent ton choix :</p>
+    <ul class="styled" style="margin-top:10px;">
+      <li><strong>Where ?</strong> – Ton interlocuteur est à côté ou dans un autre pays ?</li>
+      <li><strong>What ?</strong> – Message rapide ou rapport complet ? Info sensible ?</li>
+      <li><strong>How intrusive ?</strong> – Tu veux déranger ou pas ?</li>
+      <li><strong>How urgent ?</strong> – Réponse immédiate nécessaire ?</li>
+      <li><strong>Who ?</strong> – Un client, un collègue, ton boss ?</li>
+      <li><strong>Paper trail ?</strong> – Tu as besoin d'une trace écrite ?</li>
+      <li><strong>When ?</strong> – En dehors des heures de bureau ?</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="tag tag-green">Cours</span> Vocabulaire hiérarchique (organigramme)</div>
+    <table class="vtable">
+      <tr><th>Anglais</th><th>Français</th></tr>
+      <tr><td class="en">my boss's boss / my superior</td><td class="fr">mon supérieur hiérarchique</td></tr>
+      <tr><td class="en">my line manager (UK) / my direct/immediate superior</td><td class="fr">mon responsable direct / N+1</td></tr>
+      <tr><td class="en">my colleagues / my collaborators</td><td class="fr">mes collègues</td></tr>
+      <tr><td class="en">my staff / my team / my direct reports / my direct subordinates</td><td class="fr">mon équipe / mes subordonnés directs</td></tr>
+      <tr><td class="en">co-workers</td><td class="fr">personnes qui partagent le même lieu de travail</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SECTION 3 ═══════════════════════════════ -->
+<section class="section" id="s3">
+  <div class="section-header">
+    <div class="section-num">03</div>
+    <div class="section-title">
+      Les champs d'un email
+      <span class="section-en">Email fields / Header fields</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="tag tag-red">Cours</span> Anatomie d'un email</div>
+    <div class="email-schema">
+      <div class="email-row">
+        <div class="email-label">From</div>
+        <div class="email-content">L'adresse de l'expéditeur <span class="email-fr">= De (rempli automatiquement)</span></div>
+      </div>
+      <div class="email-row">
+        <div class="email-label">To</div>
+        <div class="email-content">Destinataire(s) principal/aux <span class="email-fr">= À (la personne à qui tu écris directement)</span></div>
+      </div>
+      <div class="email-row">
+        <div class="email-label">Cc</div>
+        <div class="email-content"><strong>Carbon copy</strong> – Destinataires en copie <span class="email-fr">= CC (informés mais pas l'action principale)</span></div>
+      </div>
+      <div class="email-row">
+        <div class="email-label">Bcc</div>
+        <div class="email-content"><strong>Blind carbon copy</strong> – Copie cachée <span class="email-fr">= CCI (les autres destinataires ne voient pas ces adresses)</span></div>
+      </div>
+      <div class="email-row">
+        <div class="email-label">Subject</div>
+        <div class="email-content">L'objet du message <span class="email-fr">= Objet (résume le sujet de l'email)</span></div>
+      </div>
+      <div class="email-row">
+        <div class="email-label">Attach</div>
+        <div class="email-content">Pièce(s) jointe(s) <span class="email-fr">= Fichier attaché à l'email</span></div>
+      </div>
+      <div class="email-row">
+        <div class="email-label">Salutation</div>
+        <div class="email-content">Ex: <em>Hello Amal,</em> <span class="email-fr">= formule d'appel</span></div>
+      </div>
+      <div class="email-row">
+        <div class="email-label">Opening</div>
+        <div class="email-content">Ex: <em>I hope this message finds you well.</em> <span class="email-fr">= phrase d'introduction</span></div>
+      </div>
+      <div class="email-row">
+        <div class="email-label">Message</div>
+        <div class="email-content">Le corps de l'email <span class="email-fr">= contenu principal</span></div>
+      </div>
+      <div class="email-row">
+        <div class="email-label">Conclusion</div>
+        <div class="email-content">Ex: <em>Please let me know if you're interested.</em> <span class="email-fr">= phrase de clôture</span></div>
+      </div>
+      <div class="email-row">
+        <div class="email-label">Sign-off</div>
+        <div class="email-content">Ex: <em>Sincerely,</em> <span class="email-fr">= formule de politesse finale</span></div>
+      </div>
+      <div class="email-row">
+        <div class="email-label">Signature</div>
+        <div class="email-content">Nom + titre + coordonnées <span class="email-fr">= bloc signature automatique</span></div>
+      </div>
+    </div>
+    <div class="tip"><strong>💡 Astuce mémo :</strong> <strong>Cc</strong> = tu informes sans attendre d'action. <strong>Bcc</strong> = tu informes en cachette (la personne ne voit pas les autres adresses).</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SECTION 4 ═══════════════════════════════ -->
+<section class="section" id="s4">
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <div class="section-title">
+      Vocabulaire email (interface &amp; actions)
+      <span class="section-en">Email vocabulary – interface &amp; useful verbs</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="tag tag-red">Cours</span> Dossiers de la boîte mail</div>
+    <table class="vtable">
+      <tr><th>Anglais</th><th>Français</th></tr>
+      <tr><td class="en">Inbox</td><td class="fr">Boîte de réception (là où arrivent les emails)</td></tr>
+      <tr><td class="en">Sent items / Sent folder</td><td class="fr">Emails envoyés</td></tr>
+      <tr><td class="en">Drafts</td><td class="fr">Brouillons (emails commencés mais non envoyés)</td></tr>
+      <tr><td class="en">Deleted items / Trash</td><td class="fr">Corbeille (emails supprimés)</td></tr>
+      <tr><td class="en">Junk / Spam</td><td class="fr">Indésirables / Spam</td></tr>
+      <tr><td class="en">Contacts</td><td class="fr">Répertoire (adresses connues)</td></tr>
+      <tr><td class="en">Folders / Tags</td><td class="fr">Dossiers / Étiquettes (rangement personnalisé)</td></tr>
+      <tr><td class="en">Outbox</td><td class="fr">Boîte d'envoi (en attente d'envoi)</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="tag tag-blue">Cours</span> Verbes et expressions utiles</div>
+    <table class="vtable">
+      <tr><th>Anglais</th><th>Français</th></tr>
+      <tr><td class="en">to forward a message to someone</td><td class="fr">transférer un message</td></tr>
+      <tr><td class="en">to reply to a message / to the sender</td><td class="fr">répondre à un message</td></tr>
+      <tr><td class="en">to answer / respond to a message</td><td class="fr">répondre à un message</td></tr>
+      <tr><td class="en">to delete / trash a message</td><td class="fr">supprimer un message</td></tr>
+      <tr><td class="en">to remove a message from the inbox</td><td class="fr">retirer un message de la boîte</td></tr>
+      <tr><td class="en">to cc someone / to loop someone in on something</td><td class="fr">mettre quelqu'un en copie</td></tr>
+      <tr><td class="en">to bcc someone</td><td class="fr">mettre en copie cachée</td></tr>
+      <tr><td class="en">to blind copy oneself (to another private email address)</td><td class="fr">s'envoyer une copie cachée</td></tr>
+      <tr><td class="en">to expose / disclose / display an email address</td><td class="fr">révéler / afficher une adresse email</td></tr>
+      <tr><td class="en">to keep someone posted (infml)</td><td class="fr">tenir quelqu'un informé</td></tr>
+      <tr><td class="en">to keep someone in the loop</td><td class="fr">maintenir quelqu'un dans la boucle</td></tr>
+      <tr><td class="en">to broadcast a piece of info</td><td class="fr">diffuser une information</td></tr>
+      <tr><td class="en">to take action / to be required to act upon the message</td><td class="fr">agir suite au message</td></tr>
+      <tr><td class="en">to be publicly / secretly informed of something</td><td class="fr">être informé publiquement / discrètement</td></tr>
+      <tr><td class="en">to apply / put pressure on someone</td><td class="fr">faire pression sur quelqu'un</td></tr>
+      <tr><td class="en">a hierarchy</td><td class="fr">une hiérarchie</td></tr>
+      <tr><td class="en">a witness</td><td class="fr">un témoin</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SECTION 5 ═══════════════════════════════ -->
+<section class="section" id="s5">
+  <div class="section-header">
+    <div class="section-num">05</div>
+    <div class="section-title">
+      Écrire l'objet d'un email
+      <span class="section-en">Writing Subject Lines</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="tag tag-red">Règles</span> Comment rédiger un bon objet</div>
+    <ul class="styled">
+      <li><strong>Toujours écrire un objet</strong> – ne jamais laisser le champ vide.</li>
+      <li>L'objet doit <strong>informer, déclencher une action, ou servir de référence</strong>.</li>
+      <li>Il doit <strong>indiquer l'importance</strong> du message.</li>
+      <li><strong>2 à 5 mots suffisent</strong> – pas besoin de phrases complètes.</li>
+      <li>Mets les <strong>mots-clés au début</strong>.</li>
+      <li>Pour deux sujets, utilise les <strong>combinateurs</strong> : <code>&amp;</code> <code>;</code> <code>+</code></li>
+    </ul>
+
+    <div class="abbrev-grid" style="margin-top:16px;">
+      <div class="abbrev-item"><span class="abbrev-code">REQ</span><div class="abbrev-desc">Required = Requis, action obligatoire</div></div>
+      <div class="abbrev-item"><span class="abbrev-code">OOO</span><div class="abbrev-desc">Out Of Office = absent du bureau</div></div>
+      <div class="abbrev-item"><span class="abbrev-code">NRN</span><div class="abbrev-desc">No Reply Needed = pas de réponse nécessaire</div></div>
+      <div class="abbrev-item"><span class="abbrev-code">FYI</span><div class="abbrev-desc">For Your Information = pour info</div></div>
+      <div class="abbrev-item"><span class="abbrev-code">SFW</span><div class="abbrev-desc">Safe For Work = convenable au bureau</div></div>
+      <div class="abbrev-item"><span class="abbrev-code">NSFW</span><div class="abbrev-desc">Not Safe For Work = contenu inapproprié</div></div>
+      <div class="abbrev-item"><span class="abbrev-code">Re:</span><div class="abbrev-desc">Réponse (ajouté automatiquement)</div></div>
+      <div class="abbrev-item"><span class="abbrev-code">Fwd:</span><div class="abbrev-desc">Forward = Transfert (ajouté automatiquement)</div></div>
+      <div class="abbrev-item"><span class="abbrev-code">EOM</span><div class="abbrev-desc">End Of Message = fin du message (tout est dans l'objet)</div></div>
+      <div class="abbrev-item"><span class="abbrev-code">ASAP</span><div class="abbrev-desc">As Soon As Possible = dès que possible</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="tag tag-blue">Exemples</span> Bons objets d'email</div>
+    <table class="vtable">
+      <tr><th>Objet anglais</th><th>Ce qu'il communique</th></tr>
+      <tr><td class="en">Jane Smith interview confirmation</td><td class="fr">Confirmer un entretien avec Jane Smith</td></tr>
+      <tr><td class="en">New inventory form – attached</td><td class="fr">Nouveau formulaire en pièce jointe</td></tr>
+      <tr><td class="en">REQ: Send your time sheet today</td><td class="fr">Action requise : envoyer sa feuille de temps</td></tr>
+      <tr><td class="en">Meeting March 28 – Attendance required</td><td class="fr">Présence obligatoire à la réunion</td></tr>
+      <tr><td class="en">Final report – For your reference</td><td class="fr">Document de référence (pas d'action)</td></tr>
+      <tr><td class="en">IMPORTANT – Results of the test</td><td class="fr">Résultats importants</td></tr>
+      <tr><td class="en">RESPONSE NEEDED by 5:00 TODAY</td><td class="fr">Urgence + heure limite</td></tr>
+      <tr><td class="en">Absence 3-5 October</td><td class="fr">Prévenir d'une absence</td></tr>
+    </table>
+    <div class="tip"><strong>💡 Astuce :</strong> EOM signifie que tout le message tient dans l'objet – le destinataire n'a pas besoin d'ouvrir l'email ! Ex: <em>Meeting postponed to Friday EOM</em></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SECTION 6 ═══════════════════════════════ -->
+<section class="section" id="s6">
+  <div class="section-header">
+    <div class="section-num">06</div>
+    <div class="section-title">
+      Commencer et terminer un email
+      <span class="section-en">Salutations &amp; Sign-offs</span>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title"><span class="tag tag-red">SALUTATIONS</span> Formules d'ouverture</div>
+      <div class="scale">
+        <div class="scale-item"><span class="scale-badge lvl-4">Très formel</span><span class="scale-text">Dear Sir or Madam, / To Whom It May Concern:</span></div>
+        <div class="scale-item"><span class="scale-badge lvl-3">Formel</span><span class="scale-text">Dear Ms Doe, / Dear Mr Collins: / Dear Dr Charles:</span></div>
+        <div class="scale-item"><span class="scale-badge lvl-2">Semi-formel</span><span class="scale-text">Dear Jane, / Dear HR Team, / Dear Colleagues,</span></div>
+        <div class="scale-item"><span class="scale-badge lvl-1">Décontracté</span><span class="scale-text">Hello Jane, / Good morning Jane, / Hi John,</span></div>
+        <div class="scale-item"><span class="scale-badge lvl-0">Informel</span><span class="scale-text">Hello, / Hi,</span></div>
+      </div>
+      <div class="warn"><strong>⚠️ À ÉVITER :</strong> Dear Mr Sam ✗ / Dear Madame ✗ / Hey! ✗ / Yo! ✗ / Dear Friend ✗ / Hi [surnom] ✗ / [pas de salutation] ✗</div>
+      <div class="tip"><strong>💡 Note :</strong> <strong>Ms</strong> (prononcé /mɪz/) est neutre → n'indique pas l'état civil. Préférable à Miss ou Mrs.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="tag tag-blue">SIGN-OFFS</span> Formules de clôture</div>
+      <div class="scale">
+        <div class="scale-item"><span class="scale-badge lvl-4">Très formel</span><span class="scale-text">Yours faithfully, (avec Dear Sir/Madam)</span></div>
+        <div class="scale-item"><span class="scale-badge lvl-3">Formel</span><span class="scale-text">Yours sincerely, (avec Dear + nom)</span></div>
+        <div class="scale-item"><span class="scale-badge lvl-2">Standard</span><span class="scale-text">Sincerely, / Regards, / Best regards, / Kind regards,</span></div>
+        <div class="scale-item"><span class="scale-badge lvl-1">Chaleureux</span><span class="scale-text">Warm regards, / All the best, / (With) best wishes,</span></div>
+        <div class="scale-item"><span class="scale-badge lvl-0">Informel</span><span class="scale-text">Have a good day, / Cheers, / Thank you, / Thanks,</span></div>
+      </div>
+      <div class="warn"><strong>⚠️ À ÉVITER :</strong> Love, ✗ / Hugs, ✗ / XOXO ✗ / Thx ✗ / Rgds ✗ / Sent from my iPhone ✗ / TTYL ✗ / [émoji] ✗</div>
+      <div class="tip"><strong>💡 Règles :</strong> Commence par une majuscule, termine par une virgule. Suivi du prénom (puis signature complète).</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="tag tag-green">Cours</span> Écrire à plusieurs destinataires</div>
+    <table class="vtable">
+      <tr><th>Contexte</th><th>Salutation</th></tr>
+      <tr><td>Deux personnes nommées</td><td class="en">Dear Ms Doe and Mr Watson,</td></tr>
+      <tr><td>Équipe connue</td><td class="en">Dear HR Team, / Dear IT Department,</td></tr>
+      <tr><td>Groupe informel</td><td class="en">Hello Team, / Hello everyone,</td></tr>
+      <tr><td>Collègues proches</td><td class="en">Dear Jane and John, / Good afternoon, Jane and Tim</td></tr>
+    </table>
+    <div class="tip"><strong>💡 Astuce :</strong> Évite "Dear Colleagues" si quelqu'un dans le groupe est supérieur hiérarchique → utilise "Dear Team" à la place.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="tag tag-gold">Bonus</span> Exprimer ce qu'on veut (vouloir que)</div>
+    <div class="formula">
+      <span class="hl">WANT / NEED / WOULD LIKE</span> + someone/something <span class="hl2">TO do…</span><br>
+      <span class="hl">WANT / NEED / WOULD LIKE</span> + someone/something <span class="hl2">NOT TO do…</span> (écrit)<br>
+      <span class="hl">WANT / NEED / WOULD LIKE</span> + someone/something <span class="hl2">TO NOT do…</span> (oral)
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SECTION 7 ═══════════════════════════════ -->
+<section class="section" id="s7">
+  <div class="section-header">
+    <div class="section-num">07</div>
+    <div class="section-title">
+      Expliquer CS &amp; IT
+      <span class="section-en">Explaining Computer Science &amp; Information Technology</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="tag tag-red">Cours</span> CS vs IT – quelle différence ?</div>
+    <div class="two-col">
+      <div style="background:var(--softer);border:1.5px solid var(--border);border-radius:4px;padding:16px;">
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:8px;color:var(--accent)">CS – Computer Science</div>
+        <p>Science informatique : conception de logiciels, algorithmes, intelligence artificielle, langages de programmation.</p>
+        <p style="margin-top:8px;font-style:italic;font-size:0.85rem;color:#666;">→ "Comment faire fonctionner un ordinateur ?"</p>
+      </div>
+      <div style="background:var(--softer);border:1.5px solid var(--border);border-radius:4px;padding:16px;">
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:8px;color:var(--accent2)">IT – Information Technology</div>
+        <p>Technologie de l'information : réseaux, serveurs, bases de données, sécurité, support technique.</p>
+        <p style="margin-top:8px;font-style:italic;font-size:0.85rem;color:#666;">→ "Comment utiliser &amp; maintenir les outils informatiques ?"</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="tag tag-blue">Cours</span> Questions pour parler de son métier</div>
+    <div class="formula">
+      <span class="hl">What do you do?</span> → <span class="hl2">I don't have a job yet. I'm a student.</span><br>
+      <span class="hl">What do you do for a living?</span> → <span class="hl2">I'm a network administrator.</span><br>
+      <span class="hl">What is your job?</span> → <span class="hl2">I work as a software developer.</span>
+    </div>
+    <div class="tip"><strong>💡 Règle :</strong> "What do you do?" = présent simple (habitude). Ne pas dire "What are you doing?" pour parler de son métier → ça signifie "Qu'est-ce que tu fais là maintenant ?"</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="tag tag-green">Cours</span> Erreurs fréquentes à éviter</div>
+    <div class="two-col">
+      <div>
+        <div class="warn"><strong>⚠️ Orthographe :</strong><br>
+          A web developer <em>(un seul P !)</em><br>
+          A program / a programmer / programming<br>
+          <em>(≠ "programme" UK = théâtre, cinéma)</em><br>
+          A system(s) administrator
+        </div>
+      </div>
+      <div>
+        <div class="warn"><strong>⚠️ Grammaire :</strong><br>
+          to work <strong>as</strong> a freelance web designer ✓<br>
+          <del>to work in freelance</del> ✗<br><br>
+          "knowledge" = <strong>toujours singulier</strong><br>
+          knowledge <strong>of</strong> (pas "about")
+        </div>
+      </div>
+    </div>
+    <div class="ok"><strong>✅ Pour décrire son métier → Présent simple :</strong><br>
+      "I'm a software developer. I <strong>program</strong> (<del>I'm programming</del>) software."<br>
+      "I <strong>write</strong> code / I <strong>create</strong> the code for software applications."
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="tag tag-gold">Cours</span> Éléments d'interface web/app à connaître</div>
+    <table class="vtable">
+      <tr><th>Anglais</th><th>Français</th></tr>
+      <tr><td class="en">a toggle button</td><td class="fr">un bouton bascule (on/off)</td></tr>
+      <tr><td class="en">a radio button</td><td class="fr">un bouton radio (choix unique)</td></tr>
+      <tr><td class="en">a check box</td><td class="fr">une case à cocher</td></tr>
+      <tr><td class="en">a drop-down list box</td><td class="fr">une liste déroulante</td></tr>
+      <tr><td class="en">a spinner / spin-box</td><td class="fr">un sélecteur numérique</td></tr>
+      <tr><td class="en">a software application / app</td><td class="fr">une application logicielle</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SECTION 8 ═══════════════════════════════ -->
+<section class="section" id="s8">
+  <div class="section-header">
+    <div class="section-num">08</div>
+    <div class="section-title">
+      Parler des métiers CS &amp; IT
+      <span class="section-en">Talking about jobs, tasks, responsibilities &amp; skills</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="tag tag-red">Cours</span> Liste des métiers (EN → FR)</div>
+    <div class="jobs-grid">
+      <div class="job-item"><div class="job-en">Software developer</div><div class="job-fr">Développeur logiciel</div></div>
+      <div class="job-item"><div class="job-en">Computer programmer</div><div class="job-fr">Programmeur informatique</div></div>
+      <div class="job-item"><div class="job-en">Front-end / Web developer</div><div class="job-fr">Développeur front-end / Web</div></div>
+      <div class="job-item"><div class="job-en">Mobile app developer</div><div class="job-fr">Développeur d'applis mobiles</div></div>
+      <div class="job-item"><div class="job-en">Blockchain engineer</div><div class="job-fr">Ingénieur blockchain</div></div>
+      <div class="job-item"><div class="job-en">IoT engineer</div><div class="job-fr">Ingénieur IoT (Internet des Objets)</div></div>
+      <div class="job-item"><div class="job-en">AI and ML engineer</div><div class="job-fr">Ingénieur IA et Machine Learning</div></div>
+      <div class="job-item"><div class="job-en">Cloud architect</div><div class="job-fr">Architecte cloud</div></div>
+      <div class="job-item"><div class="job-en">Systems administrator</div><div class="job-fr">Administrateur systèmes</div></div>
+      <div class="job-item"><div class="job-en">Network engineer / architect</div><div class="job-fr">Ingénieur / Architecte réseau</div></div>
+      <div class="job-item"><div class="job-en">DevOps engineer</div><div class="job-fr">Ingénieur DevOps</div></div>
+      <div class="job-item"><div class="job-en">SRE engineers</div><div class="job-fr">Ingénieurs SRE (Fiabilité des sites)</div></div>
+      <div class="job-item"><div class="job-en">Information security analyst</div><div class="job-fr">Analyste en sécurité de l'info</div></div>
+      <div class="job-item"><div class="job-en">Cybersecurity analyst</div><div class="job-fr">Analyste en cybersécurité</div></div>
+      <div class="job-item"><div class="job-en">Information security manager</div><div class="job-fr">Responsable RSSI</div></div>
+      <div class="job-item"><div class="job-en">Systems analyst</div><div class="job-fr">Analyste systèmes</div></div>
+      <div class="job-item"><div class="job-en">Computer &amp; information systems manager</div><div class="job-fr">Directeur des systèmes d'info (DSI)</div></div>
+      <div class="job-item"><div class="job-en">IT project manager</div><div class="job-fr">Chef de projet informatique</div></div>
+      <div class="job-item"><div class="job-en">Product manager</div><div class="job-fr">Gestionnaire de produit / Product Manager</div></div>
+      <div class="job-item"><div class="job-en">IT support specialist</div><div class="job-fr">Spécialiste en support informatique</div></div>
+      <div class="job-item"><div class="job-en">Help desk technician</div><div class="job-fr">Technicien helpdesk / Assistance technique</div></div>
+      <div class="job-item"><div class="job-en">Desktop support professional</div><div class="job-fr">Technicien de proximité</div></div>
+      <div class="job-item"><div class="job-en">UX/UI designer</div><div class="job-fr">Designer UX/UI</div></div>
+    </div>
+    <div class="tip"><strong>💡 Grammaire :</strong> "I am a/an… (titre)" ou "I work as a/an… (titre)"</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="tag tag-blue">Cours</span> Tasks / Duties / Responsibilities – quelle différence ?</div>
+    <table class="vtable">
+      <tr><th>Terme</th><th>Sens simple</th></tr>
+      <tr><td class="en">Tasks / Duties</td><td class="fr">Ce que tu <strong>fais concrètement</strong> au quotidien (souvent interchangeables). Ex: "code, test, deploy…"</td></tr>
+      <tr><td class="en">Responsibilities</td><td class="fr">Plus personnel, lié à ton rôle : si ça rate, <strong>tu es tenu responsable</strong>. Ex: "I'm responsible for the security of the system."</td></tr>
+    </table>
+    <div class="formula" style="margin-top:14px;">
+      <span class="hl">to be responsible for</span> + N/V-ing <span class="hl2">→ responsable de</span><br>
+      <span class="hl">to be in charge of</span> + N/V-ing <span class="hl2">→ chargé·e de (avoir la responsabilité de)</span><br>
+      <span class="hl">to be tasked with</span> + V-ing <span class="hl2">→ chargé·e de (mission confiée)</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="tag tag-green">Cours</span> Décrire les tâches d'un métier</div>
+    <div class="formula">
+      <span class="hl">The job typically involves</span> + N or V-ing<br>
+      <span class="hl">requires</span> + N or V-ing<br>
+      <span class="hl">entails</span> + N or V-ing<br><br>
+      Ex: "This position <span class="hl2">involves</span> a lot of time spent troubleshooting."<br>
+      Ex: "The job <span class="hl2">requires</span> coding, designing, and building applications."<br>
+      Ex: "An AI developer's job <span class="hl2">entails</span> a thorough understanding of the challenge."
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="tag tag-gold">Cours</span> Soft Skills vs Hard Skills</div>
+    <div class="two-col">
+      <div style="background:#fff8ec;border:1.5px solid var(--gold);border-radius:4px;padding:16px;">
+        <div style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:8px;color:var(--gold)">SOFT SKILLS</div>
+        <p>= "people skills" / "interpersonal skills"</p>
+        <ul class="styled" style="margin-top:8px;font-size:0.88rem;">
+          <li>Liées à la personnalité &amp; aux relations humaines</li>
+          <li>Transférables entre secteurs</li>
+          <li>Difficiles à quantifier ou mesurer</li>
+          <li>Ex: communication, problem-solving, teamwork</li>
+        </ul>
+      </div>
+      <div style="background:#f0f7ee;border:1.5px solid var(--accent3);border-radius:4px;padding:16px;">
+        <div style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:8px;color:var(--accent3)">HARD SKILLS</div>
+        <p>= "technical skills" / "job-specific skills"</p>
+        <ul class="styled" style="margin-top:8px;font-size:0.88rem;">
+          <li>Liées à un domaine d'expertise précis</li>
+          <li>Moins transférables</li>
+          <li>Facilement mesurables &amp; testables</li>
+          <li>Ex: Python, SQL, cybersecurity, C++</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="tag tag-dark">Cours</span> Exprimer compétences &amp; aptitudes (formules)</div>
+    <table class="vtable">
+      <tr><th>Expression anglaise</th><th>Sens / traduction</th></tr>
+      <tr><td class="en">skills e.g. high-level written and verbal communication skills</td><td class="fr">compétences (ex: communication écrite et orale de haut niveau)</td></tr>
+      <tr><td class="en">ability to work under pressure / to learn quickly</td><td class="fr">capacité à travailler sous pression / à apprendre rapidement</td></tr>
+      <tr><td class="en">to have extensive/broad knowledge of cloud services</td><td class="fr">avoir une connaissance étendue des services cloud</td></tr>
+      <tr><td class="en">requires a strong knowledge of ETL processes</td><td class="fr">nécessite une solide connaissance des processus ETL</td></tr>
+      <tr><td class="en">to be knowledgeable in LAN/WAN protocol</td><td class="fr">être expert en protocole LAN/WAN</td></tr>
+      <tr><td class="en">to have a strong/deep understanding of multiple OS</td><td class="fr">avoir une compréhension profonde de plusieurs systèmes d'exploitation</td></tr>
+      <tr><td class="en">experience using tools such as AWS, MySQL, JavaScript</td><td class="fr">expérience avec des outils tels que…</td></tr>
+      <tr><td class="en">proficiency in C++ / who are proficient in SQL</td><td class="fr">maîtrise de C++ / maîtrisant SQL</td></tr>
+      <tr><td class="en">a strong background in wireless communication protocols</td><td class="fr">solide expérience en protocoles de communication sans fil</td></tr>
+      <tr><td class="en">a strong foundation in mathematics, statistics and Python</td><td class="fr">solides bases en maths, statistiques et Python</td></tr>
+      <tr><td class="en">candidates must be experts in cryptography</td><td class="fr">les candidats doivent être experts en cryptographie</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="tag tag-red">Cours</span> Verbes d'action pour décrire les tâches IT</div>
+    <table class="vtable">
+      <tr><th>Verbe</th><th>Objet typique</th><th>Traduction</th></tr>
+      <tr><td class="en">address</td><td>website user issues</td><td class="fr">traiter / résoudre</td></tr>
+      <tr><td class="en">analyze</td><td>IT systems, business problems</td><td class="fr">analyser</td></tr>
+      <tr><td class="en">build</td><td>applications, software</td><td class="fr">construire / développer</td></tr>
+      <tr><td class="en">deploy</td><td>software, systems</td><td class="fr">déployer</td></tr>
+      <tr><td class="en">develop</td><td>software systems / web applications</td><td class="fr">développer</td></tr>
+      <tr><td class="en">implement</td><td>IT security systems</td><td class="fr">implémenter / mettre en place</td></tr>
+      <tr><td class="en">maintain</td><td>the software, a database, a secure web page</td><td class="fr">maintenir</td></tr>
+      <tr><td class="en">manage</td><td>a database, IT systems</td><td class="fr">gérer</td></tr>
+      <tr><td class="en">migrate</td><td>… to the cloud</td><td class="fr">migrer</td></tr>
+      <tr><td class="en">monitor</td><td>servers / complex computer networks</td><td class="fr">surveiller</td></tr>
+      <tr><td class="en">optimize</td><td>network performance</td><td class="fr">optimiser</td></tr>
+      <tr><td class="en">oversee</td><td>the company's cloud computing</td><td class="fr">superviser</td></tr>
+      <tr><td class="en">troubleshoot</td><td>software problems / systems failures</td><td class="fr">diagnostiquer &amp; résoudre des pannes</td></tr>
+      <tr><td class="en">write / create</td><td>code / source code</td><td class="fr">écrire / créer du code</td></tr>
+      <tr><td class="en">collaborate with</td><td>software developers, IT staff</td><td class="fr">collaborer avec</td></tr>
+      <tr><td class="en">communicate with</td><td>stakeholders (= decision-makers)</td><td class="fr">communiquer avec les parties prenantes</td></tr>
+    </table>
+  </div>
+
+</section>
+
+<div style="text-align:center;padding:30px 0;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#aaa;letter-spacing:2px;">
+  FICHE DE RÉVISION · ANGLAIS PRO CS/IT · BONNE CHANCE 🎯
+</div>
+
+</div>
+</body>
+</html>
